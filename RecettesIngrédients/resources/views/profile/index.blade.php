@@ -24,9 +24,14 @@
             </div>
             <div class="flex items-center space-x-6">
                 <a href="recipes" class="hover:text-green-200 transition">Recipes</a>
-                <a href="#" class="hover:text-green-200 transition font-semibold"">Profile</a>
+                <a href="#" class="hover:text-green-200 transition font-semibold">Profile</a>
                 <a href="comments" class="hover:text-green-200 transition">Comments</a>
-                <button class="bg-white text-green-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition">Logout</button>
+                <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="bg-white text-green-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition">
+                    Logout
+                </button>
+                </form>
             </div>
         </div>
     </header>
@@ -48,10 +53,8 @@
 
                 <!-- Info -->
                 <div>
-                    <h2 class="text-3xl font-bold text-gray-900">Sarah Johnson</h2>
-                    <p class="text-gray-600 mt-1">@sarahjohnson • Joined March 2023</p>
-                    <p class="text-gray-600 mt-2">🏠 San Francisco, CA</p>
-                    <p class="text-gray-600">Love cooking Italian and fusion cuisine!</p>
+                    <h2 class="text-3xl font-bold text-gray-900">{{$user->name}}</h2>
+                    <p class="text-gray-600 mt-1">@.{{$user->name}} • Joined {{ $user->created_at}}</p>
                 </div>
             </div>
 

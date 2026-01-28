@@ -22,11 +22,16 @@
                 </svg>
                 <h1 class="text-2xl font-bold">RecipeHub</h1>
             </div>
-            <div class="flex items-center space-x-6">
+            <div class="flex items-center space-x-6">   
                 <a href="recipes" class="hover:text-green-200 transition">Recipes</a>
-                <a href="#" class="hover:text-green-200 transition font-semibold"">Profile</a>
+                <a href="#" class="hover:text-green-200 transition font-semibold">Profile</a>
                 <a href="comments" class="hover:text-green-200 transition">Comments</a>
-                <button class="bg-white text-green-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition">Logout</button>
+                             <form method="POST" action="{{ route('logout') }}">
+    @csrf
+    <button type="submit" class="bg-white text-green-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition">
+        Logout
+    </button>
+</form>
             </div>
         </div>
     </header>
