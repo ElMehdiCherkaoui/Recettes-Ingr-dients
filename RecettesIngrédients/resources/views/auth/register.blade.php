@@ -70,8 +70,9 @@
                 <h2 class="text-2xl font-bold text-gray-900 mb-6">Create Account</h2>
 
                 <!-- Form -->
-                <form class="space-y-4">
+                <form class="space-y-4" method="POST" action="{{ route('register.submit') }}"> 
                     <!-- Full Name -->
+                    @csrf
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
                         <div class="relative">
@@ -80,7 +81,8 @@
                             </svg>
                             <input 
                                 type="text" 
-                                placeholder="John Doe" 
+                                placeholder="Mehdi Cherkaoui" 
+                                name="name"
                                 class="input-focus w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-500 transition-all"
                             >
                         </div>
@@ -95,6 +97,7 @@
                             </svg>
                             <input 
                                 type="email" 
+                                name="email"
                                 placeholder="Enter your email" 
                                 class="input-focus w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-500 transition-all"
                             >
@@ -111,6 +114,7 @@
                             <input 
                                 type="password" 
                                 placeholder="Create a strong password" 
+                                name="password"
                                 class="input-focus w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-500 transition-all"
                                 id="password"
                             >
@@ -134,6 +138,7 @@
                             <input 
                                 type="password" 
                                 placeholder="Confirm your password" 
+                                name="password_confirmation"
                                 class="input-focus w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-500 transition-all"
                             >
                         </div>
