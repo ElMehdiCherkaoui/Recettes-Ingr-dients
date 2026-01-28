@@ -71,8 +71,9 @@
                 <h2 class="text-2xl font-bold text-gray-900 mb-6">Sign In</h2>
 
                 <!-- Form -->
-                <form class="space-y-5">
+                <form class="space-y-5" method="POST" action="{{ route('login.submit') }}">
                     <!-- Email Input -->
+                    @csrf
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
                         <div class="relative">
@@ -81,6 +82,7 @@
                             </svg>
                             <input 
                                 type="email" 
+                                name="email"
                                 placeholder="Enter your email" 
                                 class="input-focus w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-500 transition-all"
                             >
@@ -96,6 +98,7 @@
                             </svg>
                             <input 
                                 type="password" 
+                                name="password"
                                 placeholder="Enter your password" 
                                 class="input-focus w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-500 transition-all"
                             >
