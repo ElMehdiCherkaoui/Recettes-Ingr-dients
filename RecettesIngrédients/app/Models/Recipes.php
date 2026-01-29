@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use App\Models\Category;
+use App\Models\Ingredient;
 
 class Recipes extends Model
 {
@@ -19,6 +21,7 @@ class Recipes extends Model
         'isRecipeOfDay',
         'users_id',
         'categories_id',
+        'ingredients_id',
     ];
 
 
@@ -37,7 +40,7 @@ class Recipes extends Model
         return $this->belongsTo(Category::class, 'categories_id');
     }
 
-    public function ingredients()
+    public function ingredient()
     {
         return $this->belongsTo(Ingredient::class, 'ingredients_id');
     }
@@ -45,8 +48,10 @@ class Recipes extends Model
     protected function title(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => ucfirst($value),
-            set: fn ($value) => strtolower($value),
+            get: fn($value) => ucfirst($value),
+            set: fn($value) => strtolower($value),
         );
     }
+    public function addIngrediants($id) {}
+    public function removeIngrediants($id) {}
 }
