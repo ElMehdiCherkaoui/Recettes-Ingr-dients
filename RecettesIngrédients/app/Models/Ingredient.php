@@ -24,4 +24,5 @@ class Ingredient extends Model
             set: fn($value) => strtolower($value),
         );
     }
+    public function updateQuantity(){}
 }
