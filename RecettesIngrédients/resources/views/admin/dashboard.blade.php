@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,10 +10,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * { font-family: 'Poppins', sans-serif; }
-        .sidebar-active { @apply bg-orange-500 text-white; }
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .sidebar-active {
+            @apply bg-orange-500 text-white;
+        }
     </style>
 </head>
+
 <body class="bg-gray-50">
     <div class="flex h-screen">
         <!-- Sidebar -->
@@ -25,29 +32,41 @@
             <nav class="flex-1 space-y-2">
                 <a href="dashboard" class="sidebar-active flex items-center px-4 py-3 rounded-lg transition-all">
                     <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-3m0 0l7-4 7 4M5 9v10a1 1 0 001 1h12a1 1 0 001-1V9m-9 11l4-4m-4 4l-4-4"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 12l2-3m0 0l7-4 7 4M5 9v10a1 1 0 001 1h12a1 1 0 001-1V9m-9 11l4-4m-4 4l-4-4"></path>
                     </svg>
                     Dashboard
                 </a>
-                <a href="recipes" class="flex items-center px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-all">
+                <a href="recipes"
+                    class="flex items-center px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-all">
                     <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C6.5 6.253 2 10.998 2 17c0 5.523 4.477 10 10 10s10-4.477 10-10c0-6.002-4.5-10.747-10-10.747z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 6.253v13m0-13C6.5 6.253 2 10.998 2 17c0 5.523 4.477 10 10 10s10-4.477 10-10c0-6.002-4.5-10.747-10-10.747z">
+                        </path>
                     </svg>
                     Recipes
                 </a>
-                <a href="recipe-of-the-day" class="flex items-center px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-all">
+                <a href="recipe-of-the-day"
+                    class="flex items-center px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-all">
                     <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
                     Recipe of the Day
                 </a>
             </nav>
 
             <div class="pt-6 border-t border-gray-200">
-                <button class="w-full bg-red-50 text-red-600 font-medium py-2 px-4 rounded-lg hover:bg-red-100 transition-all">
-                    Logout
-                </button>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <button type="submit"
+                        class="w-full bg-red-50 text-red-600 font-medium py-2 px-4 rounded-lg hover:bg-red-100 transition-all">
+                        Logout
+                    </button>
+                </form>
             </div>
+
         </aside>
 
         <!-- Main Content -->
@@ -68,8 +87,11 @@
                                 <p class="text-3xl font-bold text-gray-900 mt-2">245</p>
                             </div>
                             <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C6.5 6.253 2 10.998 2 17c0 5.523 4.477 10 10 10s10-4.477 10-10c0-6.002-4.5-10.747-10-10.747z"></path>
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 6.253v13m0-13C6.5 6.253 2 10.998 2 17c0 5.523 4.477 10 10 10s10-4.477 10-10c0-6.002-4.5-10.747-10-10.747z">
+                                    </path>
                                 </svg>
                             </div>
                         </div>
@@ -84,8 +106,10 @@
                                 <p class="text-3xl font-bold text-gray-900 mt-2">210</p>
                             </div>
                             <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
                             </div>
                         </div>
@@ -100,8 +124,10 @@
                                 <p class="text-3xl font-bold text-gray-900 mt-2">23</p>
                             </div>
                             <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
-                                <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
                             </div>
                         </div>
@@ -116,8 +142,11 @@
                                 <p class="text-3xl font-bold text-gray-900 mt-2">1,245</p>
                             </div>
                             <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
+                                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z">
+                                    </path>
                                 </svg>
                             </div>
                         </div>
@@ -170,21 +199,24 @@
                                     <p class="font-medium text-gray-900">Pasta Carbonara</p>
                                     <p class="text-sm text-gray-500">by John Doe • 2 hours ago</p>
                                 </div>
-                                <span class="inline-block px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full">Published</span>
+                                <span
+                                    class="inline-block px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full">Published</span>
                             </div>
                             <div class="flex items-center justify-between pb-4 border-b border-gray-200">
                                 <div>
                                     <p class="font-medium text-gray-900">Thai Green Curry</p>
                                     <p class="text-sm text-gray-500">by Jane Smith • 5 hours ago</p>
                                 </div>
-                                <span class="inline-block px-3 py-1 bg-yellow-100 text-yellow-700 text-xs font-bold rounded-full">Pending</span>
+                                <span
+                                    class="inline-block px-3 py-1 bg-yellow-100 text-yellow-700 text-xs font-bold rounded-full">Pending</span>
                             </div>
                             <div class="flex items-center justify-between">
                                 <div>
                                     <p class="font-medium text-gray-900">Chocolate Cookies</p>
                                     <p class="text-sm text-gray-500">by Mike Johnson • 1 day ago</p>
                                 </div>
-                                <span class="inline-block px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full">Published</span>
+                                <span
+                                    class="inline-block px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full">Published</span>
                             </div>
                         </div>
                     </div>
@@ -193,4 +225,5 @@
         </main>
     </div>
 </body>
+
 </html>
