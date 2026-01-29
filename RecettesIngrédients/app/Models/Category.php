@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
+
 class Category extends Model
 {
     use HasFactory;
@@ -16,10 +17,6 @@ class Category extends Model
         'description',
     ];
 
-    public function recipes()
-    {
-        return $this->hasMany(Recipes::class, 'categories_id');
-    }
 
     protected function name(): Attribute
     {
