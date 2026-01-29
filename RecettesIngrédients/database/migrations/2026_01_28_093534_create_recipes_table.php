@@ -12,16 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('recipes', function (Blueprint $table) {
-            $table->id();
-            $table->string("title");
-            $table->string("description");
-            $table->string("steps");
-            $table->string("image");
-            $table->boolean("isRecipeOfDay");
-            $table->timestamps();
-            $table->foreignId('users_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('categories_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('ingredients_id')->constrained()->cascadeOnDelete();
+                $table->id();
+                $table->string("title");
+                $table->string("description");
+                $table->string("steps");
+                $table->string("image");
+                $table->boolean("isRecipeOfDay");
+                $table->timestamps();
+                $table->foreignId('users_id')->constrained()->cascadeOnDelete();
+                $table->foreignId('categories_id')->constrained()->cascadeOnDelete();
+                $table->foreignId('ingredients_id')->constrained()->cascadeOnDelete();
         });
     }
 
