@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Recipes;
 
 use App\Http\Controllers\Controller;
+use App\Models\Recipes;
 use Illuminate\Http\Request;
 
 class recipesDetailsController extends Controller
 {
-    public function index()
+     public function index(Recipes $recipe)
     {
-        return view('recipes.show');
+        $recipe->load(['category', 'ingredient', 'user']);
+
+        return view('recipes.show', compact('recipe'));
     }
 }
