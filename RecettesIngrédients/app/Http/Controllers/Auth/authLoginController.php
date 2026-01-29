@@ -37,11 +37,6 @@ class AuthLoginController extends Controller
                 return redirect()->route('profile.index');
             }
         }
-
-
-        throw ValidationException::withMessages([
-            'email' => 'The provided credentials are incorrect.',
-        ]);
     }
 
 
