@@ -17,6 +17,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'role',
         'password',
     ];
 
@@ -46,33 +47,4 @@ class User extends Authenticatable
         );
     }
 
-    public static function register(array $data)
-    {
-        if (empty($data['name']) || empty($data['email']) || empty($data['password'])) {
-            throw ValidationException::withMessages(['message' => 'All fields are required.']);
-        }
-        return self::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
-    }
-    public static function login(array $credentials)
-    {
-        if (Auth::attempt($credentials)) {
-            request()->session()->regenerate();
-            return Auth::user();
-        }
-
-        throw ValidationException::withMessages([
-            'email' => 'The provided credentials are incorrect.',
-        ]);
-    }
-    public static function logout()
-    {
-        Auth::logout();
-        request()->session()->invalidate();
-        request()->session()->regenerateToken();
-        return true;
-    }
 }
