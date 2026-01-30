@@ -14,13 +14,22 @@ class recipesDashboardController extends Controller
 
     public function index()
     {
-
         $categories = Category::all();
         $ingredients = Ingredient::all();
-        $recipes = Recipes::with(['category', 'ingredient', 'user'])->latest()->get();
 
-        return view('recipes.index', compact('recipes', 'categories', 'ingredients'));
+        $recipes = Recipes::with(['category', 'ingredient', 'user'])
+            ->withCount('comments')
+            ->orderByDesc('comments_count')
+            ->latest()
+            ->get();
+
+        return view('recipes.index', compact(
+            'recipes',
+            'categories',
+            'ingredients'
+        ));
     }
+
 
     public function filter(Request $request)
     {
