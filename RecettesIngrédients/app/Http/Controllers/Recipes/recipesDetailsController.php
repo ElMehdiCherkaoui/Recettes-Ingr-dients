@@ -8,9 +8,14 @@ use Illuminate\Http\Request;
 
 class recipesDetailsController extends Controller
 {
-     public function index(Recipes $recipe)
+    public function index(Recipes $recipe)
     {
-        $recipe->load(['category', 'ingredient', 'user']);
+        $recipe->load([
+            'category',
+            'ingredient',
+            'user',
+            'comments.user'
+        ]);
 
         return view('recipes.show', compact('recipe'));
     }
