@@ -179,6 +179,9 @@
 
     <!-- Main Content -->
     <div class="max-w-7xl mx-auto px-6 py-16">
+        <h2 class="text-2xl font-bold text-gray-900 pb-4">
+            Recipes ({{ $recipes->count() }})
+        </h2>
 
         <!-- Recipes Grid -->
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -203,6 +206,14 @@
                                 ⭐ Recipe of the Day
                             </div>
                         @endif
+
+                        @if ($recipe->comments_count >= 5)
+                            <div
+                                class="absolute top-4 left-4 bg-emerald-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow">
+                                🔥 Popular
+                            </div>
+                        @endif
+
 
                         <!-- CATEGORY TAG -->
                         <div
@@ -253,6 +264,15 @@
                                 </span>
                                 <span>{{ $recipe->created_at->diffForHumans() }}</span>
                             </div>
+
+
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-gray-500">
+                            <span
+                                class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-green-100 text-green-700">
+                                💬
+                            </span>
+                            <span>{{ $recipe->comments_count }} comments</span>
                         </div>
 
                         <!-- CTA BUTTON -->

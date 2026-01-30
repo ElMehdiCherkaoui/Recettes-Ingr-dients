@@ -75,6 +75,9 @@ Route::get('/comments', [indexCommentsController::class, 'index'])->name('commen
 
 Route::post('/recipes/filter', [recipesDashboardController::class, 'filter'])->name('recipes.filter');
 
+
+Route::post('/recipes/{recipe}', [indexCommentsController::class, 'store'])->name('comments.store');
+
 Route::get('/', function () {
     return view('home.index');
 });

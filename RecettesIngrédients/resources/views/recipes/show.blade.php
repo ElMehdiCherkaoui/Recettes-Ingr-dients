@@ -300,185 +300,47 @@
 
     <!-- COMMENTS SECTION -->
     <section class="max-w-7xl mx-auto px-6 py-16 border-t border-gray-200">
-        <h2 class="text-3xl font-bold text-gray-900 mb-12">Comments (5)</h2>
+        <h2 class="text-3xl font-bold text-gray-900 mb-12">
+            Comments ({{ $recipe->comments->count() }})
+        </h2>
+
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
 
             <!-- Comments List -->
             <div class="lg:col-span-2 space-y-6">
 
-                <!-- Comment 1 -->
-                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition">
-                    <div class="flex gap-4">
-                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=sarah" alt="Sarah Johnson"
-                            class="w-12 h-12 rounded-full border-2 border-gray-100">
+                @forelse ($recipe->comments as $comment)
+                    <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+                        <div class="flex gap-4">
 
-                        <div class="flex-1">
-                            <div class="flex items-center gap-2 mb-3">
-                                <h4 class="font-bold text-gray-900">Sarah Johnson</h4>
-                                <span class="text-sm text-gray-600">2 days ago</span>
-                            </div>
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed={{ $comment->user->id }}"
+                                class="w-12 h-12 rounded-full border-2 border-gray-100">
 
-                            <p class="text-gray-700 leading-relaxed mb-4">
-                                Absolutely delicious! Made this last night and my family loved it. The creamy sauce is
-                                just perfect. Will definitely make it again!
-                            </p>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <h4 class="font-bold text-gray-900">
+                                        {{ $comment->user->name }}
+                                    </h4>
 
-                            <div class="flex items-center gap-4 text-sm text-gray-600">
-                                <button class="flex items-center gap-1 hover:text-red-600 transition">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M14 10h4.764a2 2 0 011.789 2.894l-3.646 7.23a2 2 0 01-1.788 1.106H2a2 2 0 01-2-2V8a2 2 0 012-2h1.657a2 2 0 011.414.586l2.828 2.829a2 2 0 001.414.586h2.328a2 2 0 012 2v1m-9-8v8m9-4h4">
-                                        </path>
-                                    </svg>
-                                    <span>12</span>
-                                </button>
-                                <button
-                                    class="text-green-600 hover:text-green-700 font-semibold transition">Reply</button>
+                                    <span class="text-sm text-gray-600">
+                                        {{ $comment->created_at->diffForHumans() }}
+                                    </span>
+                                </div>
+
+                                <p class="text-gray-700 leading-relaxed mb-4">
+                                    {{ $comment->content }}
+                                </p>
+
                             </div>
                         </div>
                     </div>
-                </div>
+                @empty
+                    <p class="text-gray-500 text-center">
+                        No comments yet. Be the first to comment!
+                    </p>
+                @endforelse
 
-                <!-- Comment 2 -->
-                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition">
-                    <div class="flex gap-4">
-                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=michael" alt="Michael Chen"
-                            class="w-12 h-12 rounded-full border-2 border-gray-100">
-
-                        <div class="flex-1">
-                            <div class="flex items-center gap-2 mb-3">
-                                <h4 class="font-bold text-gray-900">Michael Chen</h4>
-                                <span class="text-sm text-gray-600">4 days ago</span>
-                            </div>
-
-                            <p class="text-gray-700 leading-relaxed mb-4">
-                                Great recipe! I couldn't find guanciale at my local store, so I used pancetta instead
-                                and it still turned out delicious. Thanks for sharing!
-                            </p>
-
-                            <div class="flex items-center gap-4 text-sm text-gray-600">
-                                <button class="flex items-center gap-1 hover:text-red-600 transition">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M14 10h4.764a2 2 0 011.789 2.894l-3.646 7.23a2 2 0 01-1.788 1.106H2a2 2 0 01-2-2V8a2 2 0 012-2h1.657a2 2 0 011.414.586l2.828 2.829a2 2 0 001.414.586h2.328a2 2 0 012 2v1m-9-8v8m9-4h4">
-                                        </path>
-                                    </svg>
-                                    <span>8</span>
-                                </button>
-                                <button
-                                    class="text-green-600 hover:text-green-700 font-semibold transition">Reply</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Comment 3 -->
-                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition">
-                    <div class="flex gap-4">
-                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=emma" alt="Emma Wilson"
-                            class="w-12 h-12 rounded-full border-2 border-gray-100">
-
-                        <div class="flex-1">
-                            <div class="flex items-center gap-2 mb-3">
-                                <h4 class="font-bold text-gray-900">Emma Wilson</h4>
-                                <span class="text-sm text-gray-600">1 week ago</span>
-                            </div>
-
-                            <p class="text-gray-700 leading-relaxed mb-4">
-                                This is my go-to recipe now! So easy to make and tastes just like the restaurants. My
-                                date was impressed!
-                            </p>
-
-                            <div class="flex items-center gap-4 text-sm text-gray-600">
-                                <button class="flex items-center gap-1 hover:text-red-600 transition">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M14 10h4.764a2 2 0 011.789 2.894l-3.646 7.23a2 2 0 01-1.788 1.106H2a2 2 0 01-2-2V8a2 2 0 012-2h1.657a2 2 0 011.414.586l2.828 2.829a2 2 0 001.414.586h2.328a2 2 0 012 2v1m-9-8v8m9-4h4">
-                                        </path>
-                                    </svg>
-                                    <span>23</span>
-                                </button>
-                                <button
-                                    class="text-green-600 hover:text-green-700 font-semibold transition">Reply</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Comment 4 -->
-                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition">
-                    <div class="flex gap-4">
-                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=david" alt="David Martinez"
-                            class="w-12 h-12 rounded-full border-2 border-gray-100">
-
-                        <div class="flex-1">
-                            <div class="flex items-center gap-2 mb-3">
-                                <h4 class="font-bold text-gray-900">David Martinez</h4>
-                                <span class="text-sm text-gray-600">10 days ago</span>
-                            </div>
-
-                            <p class="text-gray-700 leading-relaxed mb-4">
-                                Pro tip: Cook your pasta one minute less than the package says for the perfect al dente
-                                texture. This recipe is a game-changer!
-                            </p>
-
-                            <div class="flex items-center gap-4 text-sm text-gray-600">
-                                <button class="flex items-center gap-1 hover:text-red-600 transition">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M14 10h4.764a2 2 0 011.789 2.894l-3.646 7.23a2 2 0 01-1.788 1.106H2a2 2 0 01-2-2V8a2 2 0 012-2h1.657a2 2 0 011.414.586l2.828 2.829a2 2 0 001.414.586h2.328a2 2 0 012 2v1m-9-8v8m9-4h4">
-                                        </path>
-                                    </svg>
-                                    <span>31</span>
-                                </button>
-                                <button
-                                    class="text-green-600 hover:text-green-700 font-semibold transition">Reply</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Comment 5 -->
-                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition">
-                    <div class="flex gap-4">
-                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=jessica" alt="Jessica Lee"
-                            class="w-12 h-12 rounded-full border-2 border-gray-100">
-
-                        <div class="flex-1">
-                            <div class="flex items-center gap-2 mb-3">
-                                <h4 class="font-bold text-gray-900">Jessica Lee</h4>
-                                <span class="text-sm text-gray-600">2 weeks ago</span>
-                            </div>
-
-                            <p class="text-gray-700 leading-relaxed mb-4">
-                                Made this for dinner party last weekend. Everyone asked for the recipe! This is now my
-                                favorite pasta dish ever.
-                            </p>
-
-                            <div class="flex items-center gap-4 text-sm text-gray-600">
-                                <button class="flex items-center gap-1 hover:text-red-600 transition">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M14 10h4.764a2 2 0 011.789 2.894l-3.646 7.23a2 2 0 01-1.788 1.106H2a2 2 0 01-2-2V8a2 2 0 012-2h1.657a2 2 0 011.414.586l2.828 2.829a2 2 0 001.414.586h2.328a2 2 0 012 2v1m-9-8v8m9-4h4">
-                                        </path>
-                                    </svg>
-                                    <span>45</span>
-                                </button>
-                                <button
-                                    class="text-green-600 hover:text-green-700 font-semibold transition">Reply</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Load More Button -->
-                <div class="flex justify-center pt-6">
-                    <button
-                        class="border-2 border-green-600 text-green-600 hover:bg-green-50 font-semibold py-3 px-8 rounded-xl transition">
-                        Load More Comments
-                    </button>
-                </div>
 
             </div>
 
@@ -494,29 +356,25 @@
                     Add a Comment
                 </h3>
 
-                <form class="space-y-4">
+                <form method="POST" action="{{ route('comments.store', $recipe->id) }}" class="space-y-4">
+                    @csrf
 
                     <div>
-                        <label class="block text-sm font-semibold text-gray-900 mb-2">Your Comment</label>
-                        <textarea placeholder="Share your thoughts about this recipe..." rows="5"
+                        <label class="block text-sm font-semibold text-gray-900 mb-2">
+                            Your Comment
+                        </label>
+
+                        <textarea name="content" required placeholder="Share your thoughts about this recipe..." rows="5"
                             class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 resize-none"></textarea>
+
                     </div>
 
-                    <!-- Submit Button -->
                     <button type="submit"
-                        class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-xl transition shadow-md hover:shadow-lg flex items-center justify-center gap-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 19l9 2-9-18-9 18 9-2m0 0v-8m0 8l-6-4m6 4l6-4"></path>
-                        </svg>
+                        class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-xl transition shadow-md hover:shadow-lg">
                         Post Comment
                     </button>
-
-                    <!-- Info Text -->
-                    <p class="text-xs text-gray-600 text-center">
-                        Be respectful and helpful. Comments help others!
-                    </p>
                 </form>
+
             </div>
 
         </div>
