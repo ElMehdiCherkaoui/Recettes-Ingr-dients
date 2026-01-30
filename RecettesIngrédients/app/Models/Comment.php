@@ -12,14 +12,14 @@ class Comment extends Model
 
     protected $fillable = [
         'content',
-        'user_id',
+        'users_id',
         'recipes_id',
     ];
 
   
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'users_id');
     }
 
     public function recipe()
